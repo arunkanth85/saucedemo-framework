@@ -15,7 +15,7 @@ def driver(request):
     options.add_argument("--start-maximized")
     # Uncomment the line below to run without opening a visible window
     # (this is what Jenkins/CI will use, since it has no display).
-    # options.add_argument("--headless=new")
+    options.add_argument("--headless=new")
 
     # Stops Chrome's built-in "Change your password" / "Save password?"
     # popups from appearing. SauceDemo's password (secret_sauce) is public

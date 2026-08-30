@@ -2,17 +2,10 @@ pipeline {
     agent any
 
     stages {
-        stage('Checkout Code') {
-            steps {
-                // Pulls the latest code from your GitHub repo
-                git branch: 'main', url: 'https://github.com/<your-username>/saucedemo-framework.git'
-            }
-        }
-
         stage('Install Dependencies') {
             steps {
-                sh 'python3 -m venv venv'
-                sh './venv/bin/pip install -r requirements.txt'
+                bat 'python -m venv venv'
+                bat '.\\venv\\Scripts\\pip install -r requirements.txt'
             }
         }
 
@@ -20,7 +13,7 @@ pipeline {
             steps {
                 // Note: Jenkins agents have no display, so conftest.py's
                 // --headless=new line must be uncommented for this to work.
-                sh './venv/bin/pytest'
+                bat '.\\venv\\Scripts\\pytest'
             }
         }
     }
